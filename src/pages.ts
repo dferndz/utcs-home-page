@@ -10,7 +10,7 @@ export type Page = {
 export const pages: Page[] = [
   {
     title: "Home page",
-    path: "/",
+    path: "",
     component: HomePage,
     exact: true,
   },
