@@ -26,7 +26,7 @@ export const pages: Page[] = [
     showInMenu: true,
   },
   {
-    title: "Github Repos",
+    title: "Github",
     path: "/repos",
     component: ReposPage,
     exact: true,
