@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { pages, Page } from "../pages";
-import { PUBLIC_URL } from "../constants";
+import { PUBLIC_URL, site } from "../constants";
 
 import Navbar from "../components/Navbar";
+import NotFoundPage from "../features/NotFound";
 
 import "../assets/css/bootstrap.min.css";
 
 const App = () => {
-  console.log(PUBLIC_URL);
+  const menu_pages = useMemo(
+    () => pages.filter((page: Page) => page.showInMenu),
+    [pages]
+  );
   return (
     <Router>
-      <Navbar />
+      <Navbar title={site.title} pages={menu_pages} />
       <Switch>
         {pages.map((page: Page, key: number) => (
           <Route
@@ -22,6 +26,7 @@ const App = () => {
             key={key}
           />
         ))}
+        <Route component={NotFoundPage} />
       </Switch>
     </Router>
   );
