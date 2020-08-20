@@ -1,4 +1,5 @@
 deploy:
+	git restore .
 	git pull
 	npm install
 	npm run-script build
