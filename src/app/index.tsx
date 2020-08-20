@@ -7,6 +7,7 @@ import { PUBLIC_URL, site } from "../constants";
 import Navbar from "../components/Navbar";
 import NotFoundPage from "../features/NotFound";
 
+import "placeholder-loading/dist/css/placeholder-loading.min.css";
 import "../assets/css/bootstrap.min.css";
 
 const App = () => {

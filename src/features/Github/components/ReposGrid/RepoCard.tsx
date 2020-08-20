@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Row, Col, Badge } from "react-bootstrap";
 import { BsStar, BsEye } from "react-icons/bs";
+import { RiExternalLinkLine } from "react-icons/ri";
 import { Repo } from "../../types";
 
 type Props = {
@@ -13,7 +14,7 @@ const RepoCard = ({ repo }: Props) => {
       <Card.Body>
         <h5 className="text-primary">
           <a target="_blank" href={repo.html_url}>
-            {repo.name}
+            {repo.name} <RiExternalLinkLine />
           </a>
         </h5>
 

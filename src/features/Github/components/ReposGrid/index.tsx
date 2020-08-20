@@ -1,23 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import Loading from "../Loading";
 import useRepos from "../../hooks/useRepos";
 import RepoCard from "./RepoCard";
 import { Repo } from "../../types";
+import LoadingPlaceHolder from "./Loading";
 
 type Props = {
   user: string;
 };
-
-const LoadingPlaceHolder = () => (
-  <Container>
-    <Row>
-      <Col md={12} className="text-center">
-        <Loading style={{ marginTop: "200px" }} />
-      </Col>
-    </Row>
-  </Container>
-);
 
 const ReposGrid = ({ user }: Props) => {
   const { data, isLoading, errors } = useRepos(user);

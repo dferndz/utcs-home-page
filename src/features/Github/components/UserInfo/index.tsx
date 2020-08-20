@@ -5,17 +5,11 @@ import { FiUsers } from "react-icons/fi";
 import { BsStar } from "react-icons/bs";
 
 import useUser from "../../hooks/useUser";
-import Loading from "../Loading";
+import LoadingPlaceHolder from "./Loading";
 
 type Props = {
   user: string;
 };
-
-const LoadingPlaceHolder = () => (
-  <Card.Body className="text-center">
-    <Loading />
-  </Card.Body>
-);
 
 const UserInfo = ({ user }: Props) => {
   const { data, isLoading, errors } = useUser(user);
