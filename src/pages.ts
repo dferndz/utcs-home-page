@@ -16,7 +16,7 @@ export const pages: Page[] = [
     path: "/",
     component: HomePage,
     exact: true,
-    showInMenu: true,
+    showInMenu: false,
   },
   {
     title: "About",
