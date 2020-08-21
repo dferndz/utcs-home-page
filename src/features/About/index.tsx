@@ -1,5 +1,3 @@
-import React from "react";
+import HomePageContainer from "./containers/HomePageContainer";
 
-const AboutPage = () => <p>About page</p>;
-
-export default AboutPage;
+export default HomePageContainer;

@@ -1,4 +1,12 @@
-import { Profiler } from "inspector";
+export type Page = {
+  title: string;
+  body: string;
+};
+
+export type Pages = {
+  home: Page;
+  about: Page;
+};
 
 export type Profile = {
   bio: string;
@@ -7,11 +15,12 @@ export type Profile = {
   lastName: string;
   img: string;
   github: string;
+  location: string;
 };
 
 export type CV = {
   jobs: any;
-  pages: any;
+  pages: Pages;
   profile: Profile;
   projects: any;
   schools: any;

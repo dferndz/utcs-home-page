@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
+import { CV } from "./types";
 
-export type CvContext = any;
+export type CvContext = CV | null;
 
 export const initialValue = null;
 
