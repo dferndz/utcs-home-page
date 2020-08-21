@@ -33,6 +33,25 @@ export type User = {
   updated_at?: string;
 };
 
+export type LicenseInfo = {
+  key: string;
+  name: string;
+  spdx_id: string;
+  url: string;
+  node_id: string;
+};
+
+export type License = {
+  html_url: string;
+  description: string;
+  implementation: string;
+  permissions: string[] | null;
+  conditions: string[] | null;
+  limitations: string[] | null;
+  body: string;
+  featured: boolean;
+} & LicenseInfo;
+
 export type Repo = {
   id: number;
   node_id: string;
@@ -102,7 +121,7 @@ export type Repo = {
   archived: boolean;
   disabled: boolean;
   open_issues_count: number;
-  license: any;
+  license: LicenseInfo | null;
   forks: number;
   open_issues: number;
   watchers: number;

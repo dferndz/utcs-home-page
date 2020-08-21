@@ -7,9 +7,10 @@ import { PUBLIC_URL } from "../../constants";
 type NavLinkProps = {
   title: string;
   path?: string;
+  as_a?: boolean;
 };
 
-const NavLink = ({ title, path }: NavLinkProps) => {
+const NavLink = ({ title, path, as_a }: NavLinkProps) => {
   const history = useHistory();
 
   const url = useMemo(() => (path ? `${PUBLIC_URL}${path}` : "#"), [
@@ -24,6 +25,13 @@ const NavLink = ({ title, path }: NavLinkProps) => {
     },
     [url]
   );
+
+  if (as_a)
+    return (
+      <a onClick={handleClick} href={url}>
+        {title}
+      </a>
+    );
 
   return (
     <Nav.Link onClick={handleClick} href={url}>

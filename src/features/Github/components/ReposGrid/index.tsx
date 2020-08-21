@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import useRepos from "../../hooks/useRepos";
-import RepoCard from "./RepoCard";
+import RepoCard from "../RepoCard";
 import { Repo } from "../../types";
 import LoadingPlaceHolder from "./Loading";
 
