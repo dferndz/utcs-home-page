@@ -9,7 +9,7 @@ import NotFoundPage from "../features/NotFound";
 
 import firebase from "firebase/app";
 import "firebase/database";
-import { firebaseConfig } from "../constants";
+import { firebaseConfig, PUBLIC_ID } from "../constants";
 
 import { cvContext, CvContext, initialValue } from "../context";
 
@@ -27,7 +27,7 @@ const App = () => {
   useEffect(() => {
     app
       .database()
-      .ref("PknHdA7ukXRMoaA7czXxbIKs9qJ2")
+      .ref(PUBLIC_ID)
       .on("value", (snap) => {
         setCv({ ...snap.child("cv").val() });
       });
