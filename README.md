@@ -6,9 +6,9 @@ Personal website to display professional information. Visit: [cs.utexas.edu/~dan
 
 1- Clone this repo <br />
 2- Run `npm install` <br />
-3- Add the enviroment variables to a .env file
+3- Add the environment variables to a .env file
 
-#### Required Enviroment Variables:
+#### Required Environment Variables:
 ```
 REACT_APP_FIREBASE_URL=https://<app_name>.firebaseio.com
 REACT_APP_PUBLIC_ID=<your_public_id>
@@ -37,6 +37,12 @@ You can serve the app using any static server. <br />
 
 #### Deploying to UTCS public_html
 
+Make sure you export required environment variables:
+```
+export REACT_APP_FIREBASE_URL=https://<app_name>.firebaseio.com
+export REACT_APP_PUBLIC_ID=<your_public_id>
+export REACT_APP_GITHUB_TOKEN=<your_github_personal_token>
+```
 Run `make deploy` <br />
 
 <strong>The make deploy command will sync the build folder with your ~/public_html, DELETING EVERYTHING that does not belong to the React App</strong> <br />
