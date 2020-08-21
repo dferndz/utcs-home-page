@@ -2,6 +2,8 @@ import React from "react";
 import useReadme from "../../hooks/useReadme";
 import { Repo } from "../../types";
 import marked from "marked";
+import { Col, Container, Row } from "react-bootstrap";
+import Loading from "./Loading";
 
 type Props = {
   repo: Repo;
@@ -15,12 +17,25 @@ const ReadmeCard = ({ user, repo }: Props) => {
     repo.default_branch
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
 
   if (data)
-    return <div dangerouslySetInnerHTML={{ __html: marked(data) }}></div>;
+    return (
+      <Container
+        style={{ overflowY: "scroll", height: "90vh" }}
+        dangerouslySetInnerHTML={{ __html: marked(data) }}
+      ></Container>
+    );
 
-  return <p>Ne readme</p>;
+  return (
+    <Container className="mt-4">
+      <Row>
+        <Col md={12} className="text-center">
+          <h3>This repository does not have a README.md</h3>
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default ReadmeCard;

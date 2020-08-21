@@ -86,7 +86,7 @@ const useRepos = (username: string, repo: string) => {
       );
   }, [username]);
 
-  useEffect(() => getRepos(), []);
+  useEffect(() => getRepos(), [username, repo]);
 
   return { ...state };
 };

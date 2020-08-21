@@ -8,6 +8,7 @@ import Badge from "./Badge";
 import Tag from "./Tag";
 import Link from "../../../components/Navbar/Link";
 import ViewOnGithub from "./ViewOnGithub";
+import { HiOutlineExternalLink } from "react-icons/hi";
 
 type Props = {
   repo: Repo;
@@ -36,6 +37,14 @@ const RepoCard = ({ repo, extra, className }: Props) => {
         )}
 
         <ViewOnGithub path={repo.html_url} />
+        {extra && repo.has_pages && (
+          <ViewOnGithub
+            Icon={HiOutlineExternalLink}
+            variant="secondary"
+            text="Go to repo page"
+            path={`https://${repo.owner.login}.github.io/${repo.name}`}
+          />
+        )}
       </Card.Body>
       {(repo.stargazers_count > 0 || repo.watchers_count > 0) && (
         <Card.Footer className="mt-2">

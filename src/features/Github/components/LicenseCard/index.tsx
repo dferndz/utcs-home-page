@@ -2,9 +2,11 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 import BadgeGroup from "../BadgeGroup";
+import ViewOnGithub from "../ViewOnGithub";
 import Link from "../../../../components/Navbar/Link";
 
 import useLicense from "../../hooks/useLicense";
+import { HiOutlineExternalLink } from "react-icons/hi";
 
 type Props = {
   license: string;
@@ -14,7 +16,7 @@ type Props = {
 const LicenseCard = ({ license, className }: Props) => {
   const { data, isLoading, errors } = useLicense(license);
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading) return null;
 
   if (data)
     return (
@@ -39,6 +41,12 @@ const LicenseCard = ({ license, className }: Props) => {
             title="Limitations"
             variant="danger"
             data={data.limitations}
+          />
+          <ViewOnGithub
+            Icon={HiOutlineExternalLink}
+            text="See more"
+            path={data.html_url}
+            variant="outline-secondary"
           />
         </Card.Body>
       </Card>

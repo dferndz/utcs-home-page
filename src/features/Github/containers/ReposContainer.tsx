@@ -3,18 +3,18 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import UserInfo from "../components/UserInfo";
 import ReposGrid from "../components/ReposGrid";
-import { GITHUB_USERNAME } from "../../../constants";
+import { useCv } from "../../../context";
 
 const ReposContainer = () => {
-  if (!GITHUB_USERNAME)
+  const cv = useCv();
+  if (!cv.profile?.github)
     return (
       <Container className="mt-4">
         <Row>
           <Col md={12} className="text-center">
-            <p>
-              Set the environment valirable
-              REACT_APP_GITHUB_USERNAME=your_github_username
-            </p>
+            <h3>
+              To connect to Github, specify a github username in your profile.
+            </h3>
           </Col>
         </Row>
       </Container>
@@ -24,10 +24,10 @@ const ReposContainer = () => {
     <Container className="mt-4">
       <Row>
         <Col md={4}>
-          <UserInfo user={GITHUB_USERNAME} />
+          <UserInfo user={cv.profile.github} />
         </Col>
         <Col md={8}>
-          <ReposGrid user={GITHUB_USERNAME} />
+          <ReposGrid user={cv.profile.github} />
         </Col>
       </Row>
     </Container>

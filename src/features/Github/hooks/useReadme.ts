@@ -83,7 +83,7 @@ const useReadme = (username: string, repo: string, branch: string) => {
       );
   }, [username]);
 
-  useEffect(() => getRepos(), []);
+  useEffect(() => getRepos(), [username, repo, branch]);
 
   return { ...state };
 };

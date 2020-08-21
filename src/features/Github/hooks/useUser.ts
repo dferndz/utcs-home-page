@@ -67,19 +67,20 @@ const useRepos = (username: string) => {
   const getRepos = useCallback(() => {
     dispatch({ type: Actions.REQUEST_INIT });
     fetch(url)
-      .then((response) =>
+      .then((response) => {
+        if (response.status !== 200) throw Error("Not found");
         response
           .json()
           .then((data) =>
             dispatch({ type: Actions.REQUEST_SUCCESS, payload: data })
-          )
-      )
+          );
+      })
       .catch((errors) =>
         dispatch({ type: Actions.REQUEST_FAIL, payload: errors })
       );
   }, [username]);
 
-  useEffect(() => getRepos(), []);
+  useEffect(() => getRepos(), [username]);
 
   return { ...state };
 };

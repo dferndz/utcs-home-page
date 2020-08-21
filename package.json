@@ -13,6 +13,7 @@
     "@types/react-bootstrap": "^0.32.22",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "firebase": "^7.19.0",
     "marked": "^1.1.1",
     "placeholder-loading": "^0.2.6",
     "react": "^16.13.1",

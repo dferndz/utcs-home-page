@@ -82,7 +82,7 @@ const useRepos = (license: string) => {
       );
   }, [license]);
 
-  useEffect(() => getRepos(), []);
+  useEffect(() => getRepos(), [license]);
 
   return { ...state };
 };

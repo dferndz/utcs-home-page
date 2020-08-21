@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Image, Col, Row } from "react-bootstrap";
 import { MdLocationOn } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
-import { BsStar } from "react-icons/bs";
+import Tag from "../Tag";
 
 import useUser from "../../hooks/useUser";
 import LoadingPlaceHolder from "./Loading";
@@ -16,7 +16,7 @@ const UserInfo = ({ user }: Props) => {
 
   if (isLoading) return <LoadingPlaceHolder />;
 
-  if (data)
+  if (data && !errors)
     return (
       <Card.Body>
         <Row>
@@ -28,8 +28,9 @@ const UserInfo = ({ user }: Props) => {
             <p className="text-muted mb-2" style={{ margin: "0" }}>
               {data.login}
             </p>
-            <MdLocationOn className="mr-2" />
-            <span>{data.location}</span>
+            {data.location && (
+              <Tag Component={MdLocationOn} data={data.location} />
+            )}
           </Col>
           <Col md={12} className="mt-4">
             <p>{data.bio}</p>

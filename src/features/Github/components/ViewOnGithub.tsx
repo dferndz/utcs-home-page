@@ -3,15 +3,21 @@ import { SiGithub } from "react-icons/si";
 
 type Props = {
   path: string;
+  text?: string;
+  Icon?: any;
+  variant?: string;
 };
 
-const ViewOnGithub = ({ path }: Props) => (
+const ViewOnGithub = ({ path, text, Icon, variant }: Props) => (
   <a
-    className="mt-4 btn btn-outline-primary btn-block"
+    className={`mt-4 btn btn-${
+      variant ? variant : "outline-primary"
+    } btn-block`}
     target="_blank"
     href={path}
   >
-    View on Github <SiGithub className="ml-2" />
+    {text ? text : "View on Github"}
+    {Icon ? <Icon className="ml-2" /> : <SiGithub className="ml-2" />}
   </a>
 );
 

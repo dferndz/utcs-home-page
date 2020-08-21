@@ -18,13 +18,9 @@ const SkeletonCard = () => (
 );
 
 const LoadingPlaceHolder = () => (
-  <Container className="mt-4">
+  <Container>
     <Row>
-      <Col md={4}>
-        <SkeletonCard />
-        <SkeletonCard />
-      </Col>
-      <Col md={8}>
+      <Col md={12}>
         <SkeletonCard />
         <SkeletonCard />
       </Col>
