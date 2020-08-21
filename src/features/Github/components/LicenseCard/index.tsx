@@ -63,9 +63,14 @@ const LicenseCard = ({ license, className, username, repo, branch }: Props) => {
             </Button>
           )}
         </Card.Body>
-        <Modal onHide={handleClose} show={isOpen}>
-          <Modal.Header closeButton>License</Modal.Header>
+        <Modal size="lg" onHide={handleClose} show={isOpen}>
+          <Modal.Header closeButton>
+            <Modal.Title>License</Modal.Title>
+          </Modal.Header>
           <Modal.Body>{rawLicense.data}</Modal.Body>
+          <Modal.Footer>
+            <Button onClick={handleClose}>Close</Button>
+          </Modal.Footer>
         </Modal>
       </Card>
     );

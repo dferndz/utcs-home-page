@@ -6,19 +6,36 @@ type Props = {
   text?: string;
   Icon?: any;
   variant?: string;
+  size?: string;
+  noIcon?: boolean;
+  noMt?: boolean;
 };
 
-const ViewOnGithub = ({ path, text, Icon, variant }: Props) => (
+const ViewOnGithub = ({
+  path,
+  text,
+  Icon,
+  variant,
+  size,
+  noIcon,
+  noMt,
+}: Props) => (
   <a
-    className={`mt-4 btn btn-${
+    className={`${noMt ? null : "mt-4"} btn btn-${
       variant ? variant : "outline-primary"
-    } btn-block`}
+    } btn-block ${size ? `btn-${size}` : null}`}
     target="_blank"
     rel="noopener noreferrer"
     href={path}
   >
     {text ? text : "View on Github"}
-    {Icon ? <Icon className="ml-2" /> : <SiGithub className="ml-2" />}
+    {!noIcon ? (
+      Icon ? (
+        <Icon className="ml-2" />
+      ) : (
+        <SiGithub className="ml-2" />
+      )
+    ) : null}
   </a>
 );
 

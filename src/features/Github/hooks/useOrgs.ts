@@ -1,9 +1,9 @@
 import { useReducer, useCallback, useEffect } from "react";
 
-import { Repo } from "../types";
+import { OrganizationInfo } from "../types";
 import { headers } from "./constants";
 
-const API_URL = "https://api.github.com/user/repos?sort=pushed?type=public";
+const API_URL = "https://api.github.com/user/orgs";
 
 enum Actions {
   REQUEST_INIT,
@@ -12,7 +12,7 @@ enum Actions {
 }
 
 type State = {
-  data: Repo[] | null;
+  data: OrganizationInfo[] | null;
   isLoading: boolean;
   errors: any;
 };
@@ -83,7 +83,7 @@ const useRepos = () => {
 
   useEffect(() => getRepos(), [getRepos]);
 
-  return { ...state };
+  return { ...state } as State;
 };
 
 export default useRepos;
