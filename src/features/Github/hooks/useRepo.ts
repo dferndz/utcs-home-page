@@ -1,6 +1,7 @@
 import { useReducer, useCallback, useEffect, useMemo } from "react";
 
 import { Repo } from "../types";
+import { headers } from "./constants";
 
 const API_URL = "https://api.github.com/repos/";
 
@@ -24,14 +25,14 @@ type Action = {
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case Actions.REQUEST_INIT:
-      return <State>{
+      return {
         ...state,
         data: null,
         isLoading: true,
         errors: null,
       };
     case Actions.REQUEST_SUCCESS:
-      return <State>{
+      return {
         ...state,
         data: action.payload,
         isLoading: false,
@@ -39,7 +40,7 @@ const reducer = (state: State, action: Action) => {
       };
     case Actions.REQUEST_FAIL:
       console.log(action.payload);
-      return <State>{
+      return {
         ...state,
         data: null,
         isLoading: false,
@@ -47,7 +48,7 @@ const reducer = (state: State, action: Action) => {
       };
 
     default:
-      return <State>{
+      return {
         ...state,
       };
   }
@@ -59,20 +60,16 @@ const initialState: State = {
   errors: null,
 };
 
-const useRepos = (username: string, repo: string) => {
+const useRepo = (username: string, repo: string) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const url = useMemo(() => `${API_URL}${username}/${repo}`, [
-    username,
-    repo,
-    API_URL,
-  ]);
+  const url = useMemo(() => `${API_URL}${username}/${repo}`, [username, repo]);
 
-  console.log(url);
-
-  const getRepos = useCallback(() => {
+  const getRepo = useCallback(() => {
     dispatch({ type: Actions.REQUEST_INIT });
-    fetch(url)
+    fetch(url, {
+      headers: headers,
+    })
       .then((response) => {
         if (response.status !== 200) throw Error("Not found");
         return response
@@ -84,11 +81,11 @@ const useRepos = (username: string, repo: string) => {
       .catch((errors) =>
         dispatch({ type: Actions.REQUEST_FAIL, payload: errors })
       );
-  }, [username]);
+  }, [url]);
 
-  useEffect(() => getRepos(), [username, repo]);
+  useEffect(() => getRepo(), [getRepo]);
 
   return { ...state };
 };
 
-export default useRepos;
+export default useRepo;

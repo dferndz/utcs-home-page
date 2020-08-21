@@ -1,6 +1,7 @@
 import { useReducer, useCallback, useEffect, useMemo } from "react";
 
 import { License } from "../types";
+import { headers } from "./constants";
 
 const API_URL = "https://api.github.com/licenses/";
 
@@ -24,14 +25,14 @@ type Action = {
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case Actions.REQUEST_INIT:
-      return <State>{
+      return {
         ...state,
         data: null,
         isLoading: true,
         errors: null,
       };
     case Actions.REQUEST_SUCCESS:
-      return <State>{
+      return {
         ...state,
         data: action.payload,
         isLoading: false,
@@ -39,7 +40,7 @@ const reducer = (state: State, action: Action) => {
       };
     case Actions.REQUEST_FAIL:
       console.log(action.payload);
-      return <State>{
+      return {
         ...state,
         data: null,
         isLoading: false,
@@ -47,7 +48,7 @@ const reducer = (state: State, action: Action) => {
       };
 
     default:
-      return <State>{
+      return {
         ...state,
       };
   }
@@ -62,13 +63,13 @@ const initialState: State = {
 const useRepos = (license: string) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const url = useMemo(() => `${API_URL}${license}`, [license, API_URL]);
-
-  console.log(url);
+  const url = useMemo(() => `${API_URL}${license}`, [license]);
 
   const getRepos = useCallback(() => {
     dispatch({ type: Actions.REQUEST_INIT });
-    fetch(url)
+    fetch(url, {
+      headers: headers,
+    })
       .then((response) => {
         if (response.status !== 200) throw Error("Not found");
         return response
@@ -80,9 +81,9 @@ const useRepos = (license: string) => {
       .catch((errors) =>
         dispatch({ type: Actions.REQUEST_FAIL, payload: errors })
       );
-  }, [license]);
+  }, [url]);
 
-  useEffect(() => getRepos(), [license]);
+  useEffect(() => getRepos(), [getRepos]);
 
   return { ...state };
 };

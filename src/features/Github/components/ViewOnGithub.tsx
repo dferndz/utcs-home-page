@@ -14,6 +14,7 @@ const ViewOnGithub = ({ path, text, Icon, variant }: Props) => (
       variant ? variant : "outline-primary"
     } btn-block`}
     target="_blank"
+    rel="noopener noreferrer"
     href={path}
   >
     {text ? text : "View on Github"}

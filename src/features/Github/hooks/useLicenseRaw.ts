@@ -1,9 +1,6 @@
-import { useReducer, useCallback, useEffect } from "react";
+import { useReducer, useCallback, useEffect, useMemo } from "react";
 
-import { Repo } from "../types";
-import { headers } from "./constants";
-
-const API_URL = "https://api.github.com/user/repos";
+const API_URL = "https://raw.githubusercontent.com/";
 
 enum Actions {
   REQUEST_INIT,
@@ -12,7 +9,7 @@ enum Actions {
 }
 
 type State = {
-  data: Repo[] | null;
+  data: string | null;
   isLoading: boolean;
   errors: any;
 };
@@ -60,18 +57,22 @@ const initialState: State = {
   errors: null,
 };
 
-const useRepos = () => {
+const useReadme = (username: string, repo: string, branch: string) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const url = useMemo(() => `${API_URL}${username}/${repo}/${branch}/LICENSE`, [
+    username,
+    repo,
+    branch,
+  ]);
 
   const getRepos = useCallback(() => {
     dispatch({ type: Actions.REQUEST_INIT });
-    fetch(API_URL, {
-      headers: headers,
-    })
+    fetch(url)
       .then((response) => {
         if (response.status !== 200) throw Error("Not found");
-        response
-          .json()
+        return response
+          .text()
           .then((data) =>
             dispatch({ type: Actions.REQUEST_SUCCESS, payload: data })
           );
@@ -79,11 +80,11 @@ const useRepos = () => {
       .catch((errors) =>
         dispatch({ type: Actions.REQUEST_FAIL, payload: errors })
       );
-  }, []);
+  }, [url]);
 
   useEffect(() => getRepos(), [getRepos]);
 
   return { ...state };
 };
 
-export default useRepos;
+export default useReadme;

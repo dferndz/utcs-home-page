@@ -1,20 +1,16 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import useRepos from "../../hooks/useRepos";
 import RepoCard from "../RepoCard";
 import { Repo } from "../../types";
 import LoadingPlaceHolder from "./Loading";
 
-type Props = {
-  user: string;
-};
-
-const ReposGrid = ({ user }: Props) => {
-  const { data, isLoading, errors } = useRepos(user);
+const ReposGrid = () => {
+  const { data, isLoading, errors } = useRepos();
   if (isLoading) return <LoadingPlaceHolder />;
-  if (data)
+  if (data && !errors)
     return (
-      <Container>
+      <Container style={{ overflowY: "scroll", height: "90vh" }}>
         <Row>
           {data.map((repo: Repo, key: number) => (
             <Col className="mb-4" md={6} key={key}>

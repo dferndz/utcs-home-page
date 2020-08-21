@@ -1,6 +1,6 @@
 import React, { useCallback, MouseEvent } from "react";
 import { useHistory } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import Link from "./Link";
 import { PUBLIC_URL } from "../../constants";
 
@@ -13,10 +13,13 @@ type Props = {
 
 const NavigationBar = ({ pages, title }: Props) => {
   const history = useHistory();
-  const handleNavBrandClick = useCallback((event: MouseEvent) => {
-    event.preventDefault();
-    history.push(PUBLIC_URL);
-  }, []);
+  const handleNavBrandClick = useCallback(
+    (event: MouseEvent) => {
+      event.preventDefault();
+      history.push(PUBLIC_URL);
+    },
+    [history]
+  );
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       <Container>

@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { pages, Page } from "../pages";
-import { PUBLIC_URL, site } from "../constants";
+import { PUBLIC_URL } from "../constants";
 
 import Navbar from "../components/Navbar";
 import NotFoundPage from "../features/NotFound";

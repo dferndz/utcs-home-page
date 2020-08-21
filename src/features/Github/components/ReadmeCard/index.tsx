@@ -19,7 +19,7 @@ const ReadmeCard = ({ user, repo }: Props) => {
 
   if (isLoading) return <Loading />;
 
-  if (data)
+  if (data && !errors)
     return (
       <Container
         style={{ overflowY: "scroll", height: "90vh" }}

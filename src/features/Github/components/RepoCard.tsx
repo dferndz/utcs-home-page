@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { BsStar, BsEye } from "react-icons/bs";
 import { VscIssues } from "react-icons/vsc";
 import { BiGitRepoForked } from "react-icons/bi";
@@ -21,7 +21,7 @@ const RepoCard = ({ repo, extra, className }: Props) => {
     <Card className={className}>
       <Card.Body>
         <h5 className="text-primary">
-          <Link as_a title={repo.name} path={`/repos/${repo.name}`} />
+          <Link as_a title={repo.full_name} path={`/repos/${repo.full_name}`} />
         </h5>
         <span>{repo.description}</span>
         <h5 className="mt-2 mb-4">

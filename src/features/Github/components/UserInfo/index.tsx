@@ -7,12 +7,8 @@ import Tag from "../Tag";
 import useUser from "../../hooks/useUser";
 import LoadingPlaceHolder from "./Loading";
 
-type Props = {
-  user: string;
-};
-
-const UserInfo = ({ user }: Props) => {
-  const { data, isLoading, errors } = useUser(user);
+const UserInfo = () => {
+  const { data, isLoading, errors } = useUser();
 
   if (isLoading) return <LoadingPlaceHolder />;
 
@@ -40,6 +36,7 @@ const UserInfo = ({ user }: Props) => {
               className="btn btn-secondary btn-block"
               target="_blank"
               href={data.html_url}
+              rel="noopener noreferrer"
             >
               View on Github
             </a>

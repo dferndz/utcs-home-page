@@ -34,7 +34,7 @@ export const pages: Page[] = [
   },
   {
     title: "Repository",
-    path: "/repos/:repo",
+    path: "/repos/:user/:repo",
     component: SingleRepoContainer,
     exact: true,
   },

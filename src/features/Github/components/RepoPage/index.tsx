@@ -17,14 +17,20 @@ const RepoPage = ({ repo, user }: Props) => {
   const { data, isLoading, errors } = useRepo(user, repo);
 
   if (isLoading) return <Loading />;
-  if (data)
+  if (data && !errors)
     return (
       <Container className="mt-4">
         <Row>
           <Col style={{ height: "90vh", overflowY: "scroll" }} md={4}>
             <RepoCard extra repo={data} />
             {data.license && (
-              <LicenseCard className="mt-4 mb-4" license={data.license.key} />
+              <LicenseCard
+                className="mt-4 mb-4"
+                license={data.license.key}
+                username={user}
+                repo={data.name}
+                branch={data.default_branch}
+              />
             )}
           </Col>
           <Col md={8}>

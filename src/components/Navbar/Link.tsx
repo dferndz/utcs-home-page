@@ -13,17 +13,14 @@ type NavLinkProps = {
 const NavLink = ({ title, path, as_a }: NavLinkProps) => {
   const history = useHistory();
 
-  const url = useMemo(() => (path ? `${PUBLIC_URL}${path}` : "#"), [
-    path,
-    PUBLIC_URL,
-  ]);
+  const url = useMemo(() => (path ? `${PUBLIC_URL}${path}` : "#"), [path]);
 
   const handleClick = useCallback(
     (event: MouseEvent) => {
       event.preventDefault();
       history.push(url);
     },
-    [url]
+    [url, history]
   );
 
   if (as_a)

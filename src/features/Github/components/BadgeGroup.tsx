@@ -1,5 +1,4 @@
 import React from "react";
-import { isBuffer } from "util";
 import Badge from "./Badge";
 
 type Props = {
