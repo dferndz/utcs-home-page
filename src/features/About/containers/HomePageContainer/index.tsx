@@ -18,11 +18,7 @@ const HomePage = () => {
         </Col>
         <Col md={8} style={{ overflowY: "scroll", height: "90vh" }}>
           <Page about={cv!.pages.about} />
-          <Section
-            title="Experience"
-            items={cv!.jobs.reverse()}
-            Component={JobCard}
-          />
+          <Section title="Experience" items={cv!.jobs} Component={JobCard} />
           <Section
             title="Education"
             items={cv!.schools}
