@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { Card, Modal, Button } from "react-bootstrap";
+import { Card, Modal, Button, Row, Col } from "react-bootstrap";
 
 import BadgeGroup from "../BadgeGroup";
 import ViewOnGithub from "../ViewOnGithub";
@@ -67,7 +67,13 @@ const LicenseCard = ({ license, className, username, repo, branch }: Props) => {
           <Modal.Header closeButton>
             <Modal.Title>License</Modal.Title>
           </Modal.Header>
-          <Modal.Body>{rawLicense.data}</Modal.Body>
+          <Modal.Body>
+            <Row className="justify-content-center">
+              <Col md={9}>
+                <pre>{rawLicense.data}</pre>
+              </Col>
+            </Row>
+          </Modal.Body>
           <Modal.Footer>
             <Button onClick={handleClose}>Close</Button>
           </Modal.Footer>

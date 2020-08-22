@@ -8,6 +8,27 @@ export type Pages = {
   about: Page;
 };
 
+export type Job = {
+  department: string;
+  details: string;
+  employer: string;
+  position: string;
+};
+
+export type School = {
+  degree: string;
+  details: string;
+  major: string;
+  name: string;
+  graduation: string;
+};
+
+export type Social = {
+  github: string;
+  twitter: string;
+  linkedin: string;
+};
+
 export type Profile = {
   bio: string;
   email: string;
@@ -19,11 +40,11 @@ export type Profile = {
 };
 
 export type CV = {
-  jobs: any;
+  jobs: Job[];
   pages: Pages;
   profile: Profile;
   projects: any;
-  schools: any;
+  schools: School[];
   skills: any;
-  social: any;
+  social: Social;
 };
