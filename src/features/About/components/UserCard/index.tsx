@@ -15,10 +15,10 @@ const UserCard = ({ profile, social }: Props) => {
   return (
     <Card.Body>
       <Row>
-        <Col xs={12} className="text-center">
+        <Col xs={4} md={12} className="text-center">
           <Image src={profile.img} fluid roundedCircle />
         </Col>
-        <Col className="mt-4">
+        <Col xs={8} md={12} className="mt-4">
           <h3>{`${profile.firstName} ${profile.lastName}`}</h3>
           <p style={{ margin: 0 }}>{profile.bio}</p>
           <div className="text-muted mt-2">
