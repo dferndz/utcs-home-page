@@ -1,5 +1,6 @@
 import AboutPage from "./features/About";
 import ReposPage, { SingleRepoContainer } from "./features/Github";
+import ResumeContainer from './features/Resume'
 
 export type Page = {
   title: string;
@@ -16,6 +17,13 @@ export const pages: Page[] = [
     component: AboutPage,
     exact: true,
     showInMenu: true,
+  },
+  {
+    title: "Resume",
+    path: "/resume",
+    component: ResumeContainer,
+    exact: true,
+    showInMenu: true
   },
   {
     title: "Github",
