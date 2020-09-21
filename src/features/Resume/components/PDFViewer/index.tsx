@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from 'react-bootstrap'
 import {Document, Page, pdfjs} from 'react-pdf'
-import resume_pdf from '../../../../assets/Daniel_Fernandez_UTAustin_2020.pdf'
+import resume_pdf from '../../../../assets/Fernandez_Daniel.pdf'
 
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
